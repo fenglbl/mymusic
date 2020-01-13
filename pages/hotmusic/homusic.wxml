@@ -10,11 +10,11 @@
           <van-col span="4">
             {{index+1}}
           </van-col>
-          <van-col span="4">
+          <van-col span="4" class="imgs">
             <image src="{{item.list_pic}}"></image>
           </van-col>
           <van-col span="12">
-            <view>
+            <view class="title">
               {{item.list_title}}
             </view>
           </van-col>

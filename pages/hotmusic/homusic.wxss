@@ -6,3 +6,7 @@
   width: 100rpx;
   margin-bottom: 20rpx
 }
+.imgs image{
+  width: 90rpx;
+  height: 90rpx;
+}
