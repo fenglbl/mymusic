@@ -1,0 +1,29 @@
+<!--pages/hotmusic/homusic.wxml-->
+<van-tabs swipeable active="{{tab_list_active}}"  color="#464646">
+  <van-tab wx:for="{{tab_list}}" wx:key="index" title="{{item.title}}" name="{{item.type_id}}">
+    <view class="box">
+      <view class="btn all-play">
+        <van-button  color="#AF9C7C" icon="play" round>播放全部</van-button>
+      </view>
+      <view wx:for="{{list}}" wx:key="index">
+       <van-row>
+          <van-col span="4">
+            {{index+1}}
+          </van-col>
+          <van-col span="4">
+            <image src="{{item.list_pic}}"></image>
+          </van-col>
+          <van-col span="12">
+            <view>
+              {{item.list_title}}
+            </view>
+          </van-col>
+          <van-col span="4">
+            4
+          </van-col>
+        </van-row>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>
+

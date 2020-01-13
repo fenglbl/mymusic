@@ -1,0 +1,7 @@
+/* pages/Home/Home.wxss */
+.box{
+  padding-top: 20px;
+}
+.btn.all-play{
+  width: 100rpx;
+}

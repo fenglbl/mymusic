@@ -1,0 +1,8 @@
+/* pages/hotmusic/homusic.wxss */
+.box{
+  padding-top: 20rpx;
+}
+.btn.all-play{
+  width: 100rpx;
+  margin-bottom: 20rpx
+}
