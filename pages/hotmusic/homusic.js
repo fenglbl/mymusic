@@ -7,9 +7,34 @@ Page({
   data: {
     tab_list: [],
     tab_list_active: 0,
-    list:[]
+    list:{
+      data_info:[]
+    }
   },
-
+  settab(e){
+    this.setData({
+      tab_list_active:e.detail.index,
+      list:{}
+    })
+    wx.cloud.callFunction({
+      name: 'music_top',
+      data: {
+        url: "http://musicapi.qianqian.com/v1/restserver/ting?from=android&version=8.1.6.1&channel=xiaomi&operator=3&method=baidu.ting.billboard.getTopList&type_id=" + this.data.tab_list[e.detail.index].type_id
+      },
+      config: {
+        env: 'fenglbl-ss8ge'
+      }
+    })
+    .then(res => {
+      let data = JSON.parse(res.result)
+      this.setData({
+        tab_list: data.result.type_list,
+        list: data.result.data_list
+      })
+      console.log(data)
+    })
+    console.log(this.data.tab_list_active)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,14 +48,14 @@ Page({
         env: 'fenglbl-ss8ge'
       }
     })
-      .then(res => {
-        let data = JSON.parse(res.result)
-        this.setData({
-          tab_list: data.result.type_list,
-          list: data.result.data_list.data_info.songlist
-        })
-        console.log(this.data)
+    .then(res => {
+      let data = JSON.parse(res.result)
+      this.setData({
+        tab_list: data.result.type_list,
+        list: data.result.data_list
       })
+      console.log(data)
+    })
   },
 
   /**
