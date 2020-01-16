@@ -5,15 +5,74 @@ Page({
    * 页面的初始数据
    */
   data: {
+    playData:'666',
     tab_list: [],
     tab_list_active: 0,
-    list:[]
+    list:{
+      data_info:[]
+    }
+    
   },
-
+  /**
+   * 接受子组件传过来的播放方法（函数），修改播放内容
+   */
+  plays(e) {
+    this.setData({
+      play: e.detail.play
+    })
+  },
+  /**
+   * 歌曲被点击后，获取播放地址及歌曲信息，调用播放器组建传过来的播放方法，传给播放器组建
+   */
+  play(e){
+    //console.log(e.currentTarget.dataset.id)
+    wx.cloud.callFunction({
+      name: 'music_top',
+      data: {
+        url: `http://musicapi.taihe.com/v1/restserver/ting?format=json&from=webapp_music&method=baidu.ting.song.playAAC&songid=${e.currentTarget.dataset.id}`
+      },
+      config: {
+        env: 'fenglbl-ss8ge'
+      }
+    })
+    .then(res => {
+      let data = JSON.parse(res.result)
+      this.data.play(data)
+    })
+    // console.log(e.currentTarget.dataset.user)
+  },
+  /**
+   * tabs内容被改变方法，类被改变
+   */
+  settab(e){
+    this.setData({
+      tab_list_active:e.detail.index,
+      list:{}
+    })
+    wx.cloud.callFunction({
+      name: 'music_top',
+      data: {
+        url: "http://musicapi.qianqian.com/v1/restserver/ting?from=android&version=8.1.6.1&channel=xiaomi&operator=3&method=baidu.ting.billboard.getTopList&type_id=" + this.data.tab_list[e.detail.index].type_id
+      },
+      config: {
+        env: 'fenglbl-ss8ge'
+      }
+    })
+    .then(res => {
+      let data = JSON.parse(res.result)
+      this.setData({
+        tab_list: data.result.type_list,
+        list: data.result.data_list
+      })
+      console.log(data)
+    })
+    console.log(this.data.tab_list_active)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     wx.cloud.callFunction({
       name: 'music_top',
       data: {
@@ -23,14 +82,15 @@ Page({
         env: 'fenglbl-ss8ge'
       }
     })
-      .then(res => {
-        let data = JSON.parse(res.result)
-        this.setData({
-          tab_list: data.result.type_list,
-          list: data.result.data_list.data_info.songlist
-        })
-        console.log(this.data)
+    .then(res => {
+      let data = JSON.parse(res.result)
+      this.setData({
+        tab_list: data.result.type_list,
+        list: data.result.data_list
       })
+      //resource_type_ext属性：资源类型，0为普通类，2为VIP歌曲
+      console.log(data)
+    })
   },
 
   /**

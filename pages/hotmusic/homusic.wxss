@@ -4,9 +4,69 @@
 }
 .btn.all-play{
   width: 100rpx;
-  margin-bottom: 20rpx
+  margin-bottom: 20rpx;
+  margin-left: 60rpx;
+  display: flex;
+}
+.item+.item{
+  margin-top: 50rpx;
 }
 .imgs image{
-  width: 90rpx;
-  height: 90rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.xh{
+  font-weight: 700;
+  display: block;
+  width: 80%;
+  text-align: right;
+  line-height: 100rpx;
+
+}
+.text_right{
+  font-size: 25rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #888;
+}
+.title{
+  width: 100%;
+  font-size: 23rpx;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 10rpx;
+  overflow:hidden;
+  word-break:keep-all;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.subtitle{
+  font-size: 25rpx;
+  color: #888;
+
+}
+.singer{
+  position: relative;
+}
+.singer image{
+ width: 20rpx;
+ height: 20rpx;
+ border-radius: 50%;
+}
+.singer view{
+  display: inline-block;
+  font-size:25rpx;
+  margin-left: 20rpx;
+  width: 100%;
+  position: absolute;
+  overflow:hidden;
+  word-break:keep-all;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.all-play .van-button--mini{
+  width: 160rpx;
+  min-height: 50rpx;
+  font-size: 20rpx;
+  font-weight: 500;
 }

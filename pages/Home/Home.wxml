@@ -1,10 +1,4 @@
 <!--pages/Home/Home.wxml-->
-<van-tabs swipeable active="{{tab_list_active}}"  color="#464646">
-  <van-tab wx:for="{{tab_list}}" wx:key="index" title="{{item.title}}" name="{{item.type_id}}">
-    <view class="box">
-      <view class="btn all-play">
-        <van-button color="#AF9C7C" icon="play" round>播放全部</van-button>
-      </view>
-    </view>
-  </van-tab>
-</van-tabs>
+<tabBarPlay bind:myevent="plays"></tabBarPlay>
+
+<button bindtap="toplay">播放</button>

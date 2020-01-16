@@ -1,14 +1,16 @@
 <!--pages/hotmusic/homusic.wxml-->
-<van-tabs swipeable active="{{tab_list_active}}"  color="#464646">
-  <van-tab wx:for="{{tab_list}}" wx:key="index" title="{{item.title}}" name="{{item.type_id}}">
-    <view class="box">
-      <view class="btn all-play">
-        <van-button  color="#AF9C7C" icon="play" round>播放全部</van-button>
+<tabBarPlay bind:myevent="plays"></tabBarPlay>
+<van-tabs swipeable animated sticky bind:change="settab" active="{{tab_list_active}}"  color="#464646">
+  <van-tab wx:for="{{tab_list}}" wx:key="index" title="{{item.title}}" name="1">
+    <!-- 歌单列表 -->
+    <view class="box" wx:if="{{tab_list[tab_list_active].style_id==1}}">
+      <view class="btn all-play" >
+        <van-button size="mini"  color="#AF9C7C" icon="play" round>全部播放</van-button>
       </view>
-      <view wx:for="{{list}}" wx:key="index">
+      <view wx:for="{{list.data_info.songlist}}" class="item" wx:key="index">
        <van-row>
           <van-col span="4">
-            {{index+1}}
+            <text class="xh" style="color:{{index+1>3?'#999':'#000'}}">{{index+1<10?'0'+(index+1):index+1}}</text>
           </van-col>
           <van-col span="4" class="imgs">
             <image src="{{item.list_pic}}"></image>
@@ -17,13 +19,56 @@
             <view class="title">
               {{item.list_title}}
             </view>
+            <view class="subtitle">
+              {{item.style_tag}}
+            </view>
+            <view class="singer">
+              <image src="{{item.userinfo.userpic_small}}"></image>
+              <view>{{item.userinfo.username}}</view>
+            </view> 
           </van-col>
           <van-col span="4">
-            4
+            <view class="text_right">
+              {{item.song_num}}首单曲
+            </view>
+          </van-col>
+        </van-row>
+      </view>
+    </view>
+    <!-- 歌曲列表 -->
+    <view class="box" wx:if="{{tab_list[tab_list_active].style_id==2}}">
+      <view class="btn all-play" >
+        <van-button size="mini" color="#AF9C7C" icon="play" round>全部播放</van-button>
+        <van-button size="mini" plain style="margin-left:30rpx" color="#AF9C7C" icon="down" round>全部下载</van-button>
+      </view>
+      <view wx:for="{{list.data_info.song}}"   bindtap="play" data-id="{{item.song_id}}"  class="item" wx:key="index">
+       <van-row>
+          <van-col span="4">
+            <text class="xh" style="color:{{index+1>3?'#999':'#000'}}">{{index+1<10?'0'+(index+1):index+1}}</text>
+          </van-col>
+          <van-col span="4" class="imgs">
+            <image src="{{item.pic_small}}"  ></image>
+          </van-col>
+          <van-col span="12">
+            <view class="title">
+              {{item.title}}
+            </view>
+            <view class="subtitle">
+              {{item.album_title}}
+            </view>
+            <view class="singer">
+              <view>{{item.info}}</view>
+            </view> 
+          </van-col>
+          <van-col span="4">
+            <view class="text_right" style="margin-left:0;">
+              {{(item.file_duration-item.file_duration%60)/60+":"+item.file_duration%60}}
+            </view>
           </van-col>
         </van-row>
       </view>
     </view>
   </van-tab>
+  
 </van-tabs>
 

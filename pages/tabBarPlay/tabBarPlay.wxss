@@ -1,0 +1,9 @@
+/* pages/tabBarPlay/tabBarPlay.wxss */
+.tabbat-play{
+  width: 100%;
+  height: 80rpx;
+  background-color: #aaa;
+  z-index: 10000;
+  position: fixed;
+  bottom: 0rpx;
+}
