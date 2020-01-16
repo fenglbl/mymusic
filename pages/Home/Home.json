@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "tabBarPlay": "/components/tabBarPlay/tabBarPlay"
+  }
 }

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/hotmusic/homusic",
-    "pages/Home/Home"
+    "pages/Home/Home",
+    "pages/hotmusic/homusic"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -17,6 +17,28 @@
     "van-tab": "vant-weapp/tab/index",
     "van-tabs": "vant-weapp/tabs/index",
     "van-row": "vant-weapp/row/index",
-    "van-col": "vant-weapp/col/index"
+    "van-col": "vant-weapp/col/index",
+    "van-notice-bar": "vant-weapp/notice-bar/index"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/Home/Home",
+      "text": "首页",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home.png"
+    },
+    {
+      "pagePath": "pages/hotmusic/homusic",
+      "text": "场景",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home.png"
+    },
+    {
+      "pagePath": "pages/Home/Home",
+      "text": "我的",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home.png"
+    }]
   }
+  
 }

@@ -1,0 +1,14 @@
+<!--components/tabBarPlay.wxml-->
+<view class="tabbat-play">
+
+  <view class="box" bindtap="setdata">
+    <view class="title">
+      <van-notice-bar
+        text="{{ playData.songinfo.title + '/' + playData.songinfo.artist}}"
+        scrollable
+        color="#555"
+      />
+    </view>
+  </view>
+  
+</view>

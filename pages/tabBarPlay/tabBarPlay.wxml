@@ -1,0 +1,9 @@
+<!--pages/tabBarPlay/tabBarPlay.wxml-->
+<view class="tabbat-play">
+
+  <view class="box">
+  播放
+    <view class="title">{{data.num}}</view>
+  </view>
+  
+</view>

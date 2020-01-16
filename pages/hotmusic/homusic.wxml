@@ -1,12 +1,13 @@
 <!--pages/hotmusic/homusic.wxml-->
-<van-tabs swipeable animated bind:change="settab" active="{{tab_list_active}}" sticky color="#464646">
-  <van-tab wx:for="{{tab_list}}" wx:key="index" title="{{item.title}}">
+<tabBarPlay bind:myevent="plays"></tabBarPlay>
+<van-tabs swipeable animated sticky bind:change="settab" active="{{tab_list_active}}"  color="#464646">
+  <van-tab wx:for="{{tab_list}}" wx:key="index" title="{{item.title}}" name="1">
     <!-- 歌单列表 -->
     <view class="box" wx:if="{{tab_list[tab_list_active].style_id==1}}">
       <view class="btn all-play" >
         <van-button size="mini"  color="#AF9C7C" icon="play" round>全部播放</van-button>
       </view>
-      <view wx:for="{{list.data_info.songlist}}"  class="item" wx:key="index">
+      <view wx:for="{{list.data_info.songlist}}" class="item" wx:key="index">
        <van-row>
           <van-col span="4">
             <text class="xh" style="color:{{index+1>3?'#999':'#000'}}">{{index+1<10?'0'+(index+1):index+1}}</text>
@@ -40,13 +41,13 @@
         <van-button size="mini" color="#AF9C7C" icon="play" round>全部播放</van-button>
         <van-button size="mini" plain style="margin-left:30rpx" color="#AF9C7C" icon="down" round>全部下载</van-button>
       </view>
-      <view wx:for="{{list.data_info.song}}"  class="item" wx:key="index">
+      <view wx:for="{{list.data_info.song}}"   bindtap="play" data-id="{{item.song_id}}"  class="item" wx:key="index">
        <van-row>
           <van-col span="4">
             <text class="xh" style="color:{{index+1>3?'#999':'#000'}}">{{index+1<10?'0'+(index+1):index+1}}</text>
           </van-col>
           <van-col span="4" class="imgs">
-            <image src="{{item.pic_small}}"></image>
+            <image src="{{item.pic_small}}"  ></image>
           </van-col>
           <van-col span="12">
             <view class="title">
@@ -60,7 +61,7 @@
             </view> 
           </van-col>
           <van-col span="4">
-            <view class="text_right">
+            <view class="text_right" style="margin-left:0;">
               {{(item.file_duration-item.file_duration%60)/60+":"+item.file_duration%60}}
             </view>
           </van-col>
@@ -68,5 +69,6 @@
       </view>
     </view>
   </van-tab>
+  
 </van-tabs>
 

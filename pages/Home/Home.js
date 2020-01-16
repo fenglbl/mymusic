@@ -7,28 +7,22 @@ Page({
   data: {
     tab_list:[],
     tab_list_active:0,
+    play:''
   },
-
+  toplay(){
+    this.data.play({title:'兰花',url:'6666'})
+    //this.play({url:666})
+  },
+  plays(e){
+    this.setData({
+      play: e.detail.play
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.callFunction({
-      name:'music_top',
-      data:{
-        url:"http://musicapi.qianqian.com/v1/restserver/ting?from=android&version=8.1.6.1&channel=xiaomi&operator=3&method=baidu.ting.billboard.getTopList&type_id=601"
-      },
-      config:{
-        env:'fenglbl-ss8ge'
-      }
-    })
-    .then(res=>{
-      let data = JSON.parse(res.result)
-      this.setData({
-        tab_list: data.result.type_list,
-      })
-      console.log(data)
-    })
+    
   },
 
   /**

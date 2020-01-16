@@ -30,15 +30,23 @@
   color: #888;
 }
 .title{
-  font-size: 30rpx;
+  width: 100%;
+  font-size: 23rpx;
   color: #000;
   font-weight: 500;
   margin-bottom: 10rpx;
+  overflow:hidden;
+  word-break:keep-all;
+  white-space:nowrap;
+  text-overflow:ellipsis;
 }
 .subtitle{
   font-size: 25rpx;
   color: #888;
 
+}
+.singer{
+  position: relative;
 }
 .singer image{
  width: 20rpx;
@@ -49,6 +57,12 @@
   display: inline-block;
   font-size:25rpx;
   margin-left: 20rpx;
+  width: 100%;
+  position: absolute;
+  overflow:hidden;
+  word-break:keep-all;
+  white-space:nowrap;
+  text-overflow:ellipsis;
 }
 .all-play .van-button--mini{
   width: 160rpx;
